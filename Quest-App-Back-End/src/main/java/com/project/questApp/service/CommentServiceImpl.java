@@ -6,6 +6,7 @@ import com.project.questApp.entity.User;
 import com.project.questApp.repository.CommentRepository;
 import com.project.questApp.requests.CommentCreateRequest;
 import com.project.questApp.requests.CommentUpdateRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class CommentServiceImpl implements CommentService{
     private UserService userService;
     private PostService postService;
 
+    @Autowired
     public CommentServiceImpl(CommentRepository commentRepository, UserService userService, PostService postService) {
         this.commentRepository = commentRepository;
         this.userService = userService;
