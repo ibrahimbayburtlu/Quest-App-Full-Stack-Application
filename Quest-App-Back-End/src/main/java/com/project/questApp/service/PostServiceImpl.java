@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Post createOnePost(PostCreateRequest newPostCreateRequest) {
-        User user = userService.getOneUser(newPostCreateRequest.getUserId());
+        User user = userService.getOneUserById(newPostCreateRequest.getUserId());
         if (user == null)
             return null;
 

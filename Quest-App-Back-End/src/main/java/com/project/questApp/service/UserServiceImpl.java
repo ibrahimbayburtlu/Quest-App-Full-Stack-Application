@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getOneUser(Long userId) {
+    public User getOneUserById(Long userId) {
         // custom exception
         return userRepository.findById(userId).orElse(null);
     }
