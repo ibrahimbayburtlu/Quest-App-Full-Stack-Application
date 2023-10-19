@@ -5,11 +5,13 @@ import com.project.questApp.entity.User;
 import com.project.questApp.repository.PostRepository;
 import com.project.questApp.requests.PostCreateRequest;
 import com.project.questApp.requests.PostUpdateRequest;
+import com.project.questApp.responses.PostResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService{
@@ -24,11 +26,14 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<Post> getAllPostsByUserId(Optional<Long> userId) {
+    public List<PostResponse> getAllPostsByUserId(Optional<Long> userId) {
+        List<Post> list;
         if (userId.isPresent()){
-            return postRepository.findByUserId(userId);
+            list = postRepository.findByUserId(userId);
+        }else {
+            list = postRepository.findAll();
         }
-        return postRepository.findAll();
+        return list.stream().map(PostResponse::new).collect(Collectors.toList());
     }
 
     @Override
