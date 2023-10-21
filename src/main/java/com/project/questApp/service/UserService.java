@@ -10,4 +10,5 @@ public interface UserService {
     User getOneUserById (Long userId);
     User updateOneUser(Long userId,User newUser);
     void deleteOneUser(Long userId);
+    User getOneUserByUserName(String userName);
 }
